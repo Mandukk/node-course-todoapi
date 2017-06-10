@@ -6,6 +6,8 @@ const {mongoose} = require('./db/mongoose');
 const {Todo} = require('./models/todo');
 const {User} = require('./models/user');
 
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -46,17 +48,11 @@ app.get('/todos/:id', (req, res) => {
   }, (e) => {
     res.status(400).send({});
   });
-  //find by id
-    //success
-      //if todo - send it back
-      //if no todo - send it back with 404 with empty body
-    //error
-      //400 - and send back empty body
 });
 
 
-app.listen(3000, () => {
-  console.log('Started on port 3000');
+app.listen(port, () => {
+  console.log(`Started on port ${port}`);
 });
 
 module.exports = {app};
